@@ -1,21 +1,24 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.amitverma</groupId>
-  <artifactId>jenkins-git-integration</artifactId>
-  <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>jenkins-git-integration Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <build>
-    <finalName>jenkins-git-integration</finalName>
-  </build>
-</project>
+<packaging>war</packaging>
+
+<build>
+  <plugins>
+    <!-- Modern WAR plugin (works with Java 11/17) -->
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-war-plugin</artifactId>
+      <version>3.4.0</version>
+    </plugin>
+
+    <!-- Compile level; 11 is a safe default -->
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.11.0</version>
+      <configuration>
+        <release>11</release> <!-- or 17 if your code supports it -->
+      </configuration>
+    </plugin>
+  </plugins>
+
+  <finalName>${project.artifactId}-${project.version}</finalName>
+</build>
